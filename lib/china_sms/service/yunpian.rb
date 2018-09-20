@@ -9,6 +9,7 @@ module ChinaSMS
       TPL_SEND_URL   = 'https://sms.yunpian.com/v2/sms/tpl_batch_send.json'
       VOICE_SEND_URL = 'https://voice.yunpian.com/v2/voice/send.json'
       ADD_TPL = 'https://sms.yunpian.com/v2/tpl/add.json'
+      CheckTPL = "https://sms.yunpian.com/v2/tpl/get.json"
 
 
       def to phone, content, options = {}
@@ -63,6 +64,20 @@ module ChinaSMS
         options[:apikey] ||= options[:password]
         p options
         res = Net::HTTP.post_form(URI.parse(ADD_TPL), options)
+        result res.body
+      end
+
+      def add_template options = {}
+        options[:apikey] ||= options[:password]
+        p options
+        res = Net::HTTP.post_form(URI.parse(ADD_TPL), options)
+        result res.body
+      end
+
+      def check_tpl options = {}
+        options[:apikey] ||= options[:password]
+        p options
+        res = Net::HTTP.post_form(URI.parse(CheckTPL), options)
         result res.body
       end
 

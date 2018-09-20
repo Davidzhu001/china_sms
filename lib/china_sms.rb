@@ -49,6 +49,12 @@ module ChinaSMS
   end
 
 
+  def check_tpl(options = {})
+    options = default_options.merge options
+    @service.check_tpl options if @service
+  end
+
+
   def clear
     @service = @username = @password = nil
   end
