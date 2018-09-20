@@ -42,6 +42,13 @@ module ChinaSMS
     @service.get options if @service
   end
 
+
+  def add_template(options = {})
+    options = default_options.merge options
+    @service.add_template options if @service
+  end
+
+
   def clear
     @service = @username = @password = nil
   end
