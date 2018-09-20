@@ -62,6 +62,7 @@ module ChinaSMS
       def add_template tpl_content, options = {}
         options.merge!({apikey: options[:password]})
         options.merge!({tpl_content: tpl_content})
+        p options
         res = Net::HTTP.post_form(URI.parse(ADD_TPL), options)
         result res.body
       end
